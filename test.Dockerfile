@@ -1,4 +1,8 @@
-FROM clojure:openjdk-11-lein-slim-buster AS BUILD
+FROM clojure
 
+RUN mkdir /code
+
+COPY project.clj /code
 COPY . /code
+
 WORKDIR /code

@@ -7,7 +7,5 @@ __build_test_image:
 
 test: __build_test_image
 	docker run \
-		-v $(shell pwd):/code \
-		-u $$(stat -c "%u:%g" $(shell pwd)) \
-		clojure-test \
+    -t clojure-test \
     lein test
