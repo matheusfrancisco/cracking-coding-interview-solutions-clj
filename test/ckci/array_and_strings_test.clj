@@ -22,7 +22,17 @@
     (is (= (compression "aabc    aaa") "a2b1c1 4a3"))
     (is (= (compression "abc") "abc"))
     (is (= (compression "a") "a"))
-    (is (= (compression "") ""))))
+    (is (= (compression "") "")))
+
+  (testing "One way"
+    (are [expected s1 s2] (= expected (one-away? s1 s2))
+         true "" ""
+         true "abc" "abb"
+         false "av" "bc"
+         false "ak" "47"
+         true "pale" "bale"
+         true "pale" "ple"
+         true "pales" "pale")))
 
 (deftest study-notes
   (testing "The distinct function should returns a
@@ -34,6 +44,12 @@
   (testing "The distinct? function used on is-unique-new-ds
             returns true if no two of the arguments are equal"
     (is (= (distinct? 1 2 2 1) false))))
+
+(deftest study-notes-some-clojure-functions
+  (testing "zipmap Returns a map with the keys mapped to the corresponding vals. "
+    (let [zip1 (zipmap [:a :b :c] (repeat 0))]
+      (is (= {:a 0 :b 0 :c 0} zip1)))))
+
 
 
 
