@@ -15,7 +15,14 @@
          true "ab" "ba"
          true "abc" "cba"
          false "av" "bc"
-         false "ak" "47")))
+         false "ak" "47"))
+
+  (testing "Compressed string"
+    (is (= (compression "aabcccccaaa") "a2b1c5a3"))
+    (is (= (compression "aabc    aaa") "a2b1c1 4a3"))
+    (is (= (compression "abc") "abc"))
+    (is (= (compression "a") "a"))
+    (is (= (compression "") ""))))
 
 (deftest study-notes
   (testing "The distinct function should returns a

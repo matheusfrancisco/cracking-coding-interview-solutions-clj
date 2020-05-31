@@ -25,3 +25,19 @@
     Time complexity: O(N)
   """
   (= (frequencies s1) (frequencies s2)))
+
+
+
+(defn compression [s1]
+  """
+    Time complexity: O(N^2)
+  """
+  (let [parts (partition-by identity s1)
+        compressed (clojure.string/join (reduce #(conj % (first %2) (count %2)) [] parts))]
+    (if (<= (count s1) (count compressed))
+      s1
+      compressed)))
+
+
+
+
